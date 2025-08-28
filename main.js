@@ -1,5 +1,7 @@
 const { Client } = require('pg')
 const express = require('express')
+const dotenv = require('dotenv')
+dotenv.config()
 
 const app = express()
 
@@ -7,9 +9,9 @@ app.use(express.json())
 
 const con = new Client({
     host: "localhost",
-    user: "saeed",
+    user: process.env.dataBase_user,
     port: 5432,
-    password: "saeed",
+    password: process.env.dataBase_password,
     database: "demopost"
 })
 con.connect(() => {
